@@ -179,7 +179,7 @@ void *pthread_service(void* sfd)
 		char *p = strtok(mes, " \r\n");
 		if (strcmp(p, "mesto") ==0){
 			//發送訊息
-			p = strtok(NULL, " \r\n");
+			p = strtok(NULL, ",\r\n");
 
 			int target=find_user(p);
 			if(target==-1)
@@ -189,7 +189,7 @@ void *pthread_service(void* sfd)
 				send(fd,str,sizeof(str),0);
 			}
 			else{
-				p = strtok(NULL, " \r\n");
+				p = strtok(NULL, ",\r\n");
 				if(p == NULL) continue;
 				memset(str, 0, sizeof(str));
 				sprintf(str,"用戶 %s 悄悄地對你說: %s\n",user_list[user_id],p);
@@ -199,7 +199,7 @@ void *pthread_service(void* sfd)
 		}
 		else if (strcmp(p, "fileto")==0){
 			//發送檔案
-			p = strtok(NULL, " \r\n");
+			p = strtok(NULL, ",\r\n");
 			if(p == NULL) continue;
 
 			int target=find_user(p);
