@@ -9,7 +9,7 @@
 #include <pthread.h> 
 #include <stdlib.h>
 
-#define PORT 1234    
+#define PORT 8864   
 #define BACKLOG 1 
 #define Max 10 //最多10人連線
 #define MAXSIZE 1048576 //資料傳輸最多1MB
