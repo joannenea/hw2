@@ -287,7 +287,7 @@ int  main()
 		perror("listen() error\n"); 
 		exit(1); 
 	} 
-	printf("Waiting for client....\n");
+	printf("等待連線中,請稍候\n");
 
 
 	while(1)
