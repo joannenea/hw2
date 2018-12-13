@@ -185,7 +185,7 @@ void *pthread_service(void* sfd)
 			if(target==-1)
 			{
 				memset(str, 0, sizeof(str));
-				strcpy(str,"user not found!\n");
+				strcpy(str,"該用戶不存在\n");
 				send(fd,str,sizeof(str),0);
 			}
 			else{
@@ -206,7 +206,7 @@ void *pthread_service(void* sfd)
 			if(target==-1)
 			{
 				memset(str, 0, sizeof(str));
-				strcpy(str,"user not found!\n");
+				strcpy(str,"該用戶不存在\n");
 				send(fd,str,sizeof(str),0);
 			}
 			else{
