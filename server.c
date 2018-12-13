@@ -176,44 +176,44 @@ void *pthread_service(void* sfd)
 		//檢查指令
 		char ori[1024];
 		strcpy(ori,mes);
-		char *p = strtok(mes, ",\r\n");
-		if (strcmp(p, "mesto") ==0){
+		char *p = strtok(mes, " \r\n");
+		if (strcmp(p, "sendto") ==0){
 			//發送訊息
-			p = strtok(NULL, ",\r\n");
+			p = strtok(NULL, " \r\n");
 
 			int target=find_user(p);
 			if(target==-1)
 			{
 				memset(str, 0, sizeof(str));
-				strcpy(str,"user not found!\n");
+				strcpy(str,"該用戶不存在\n");
 				send(fd,str,sizeof(str),0);
 			}
 			else{
-				p = strtok(NULL, ",\r\n");
+				p = strtok(NULL, " \r\n");
 				if(p == NULL) continue;
 				memset(str, 0, sizeof(str));
-				sprintf(str,"user %s send to you only: %s\n",user_list[user_id],p);
+				sprintf(str,"用戶 %s 悄悄地對你說: %s\n",user_list[user_id],p);
 				send(fdt[target],str,sizeof(str),0);
 			}
 
 		}
-		else if (strcmp(p, "fileto")==0){
+		else if (strcmp(p, "sendfileto")==0){
 			//發送檔案
-			p = strtok(NULL, ",\r\n");
+			p = strtok(NULL, " \r\n");
 			if(p == NULL) continue;
 
 			int target=find_user(p);
 			if(target==-1)
 			{
 				memset(str, 0, sizeof(str));
-				strcpy(str,"user not found!\n");
+				strcpy(str,"該用戶不存在\n");
 				send(fd,str,sizeof(str),0);
 			}
 			else{
-				p = strtok(NULL, ",\r\n");
+				p = strtok(NULL, " \r\n");
 				if(p == NULL) continue;
 				memset(str, 0, sizeof(str));
-				sprintf(str,"ready to accept file:%s\n",p);
+				sprintf(str,"準備接收檔案:%s\n",p);
 				send(fd,str,sizeof(str),0);
 
 				//接收檔案到server
