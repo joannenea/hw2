@@ -9,7 +9,7 @@
 #include <pthread.h> 
 #include <stdlib.h>
 
-#define PORT 1234    
+#define PORT 8834    
 #define BACKLOG 1 
 #define Max 10 //最多10人連線
 #define MAXSIZE 1048576 //資料傳輸最多1MB
@@ -192,7 +192,7 @@ void *pthread_service(void* sfd)
 				p = strtok(NULL, ",\r\n");
 				if(p == NULL) continue;
 				memset(str, 0, sizeof(str));
-				sprintf(str,"user %s send to you only: %s\n",user_list[user_id],p);
+				sprintf(str,"用戶 %s 悄悄地對你說: %s\n",user_list[user_id],p);
 				send(fdt[target],str,sizeof(str),0);
 			}
 
