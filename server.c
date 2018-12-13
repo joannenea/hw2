@@ -9,7 +9,7 @@
 #include <pthread.h> 
 #include <stdlib.h>
 
-#define PORT 8864   
+#define PORT 8834   
 #define BACKLOG 1 
 #define Max 10 //最多10人連線
 #define MAXSIZE 1048576 //資料傳輸最多1MB
@@ -185,7 +185,7 @@ void *pthread_service(void* sfd)
 			if(target==-1)
 			{
 				memset(str, 0, sizeof(str));
-				strcpy(str,"user not found!\n");
+				strcpy(str,"該用戶不存在\n");
 				send(fd,str,sizeof(str),0);
 			}
 			else{
@@ -197,7 +197,7 @@ void *pthread_service(void* sfd)
 			}
 
 		}
-		else if (strcmp(p, "sendfileto")==0){
+		else if (strcmp(p, "fileto")==0){
 			//發送檔案
 			p = strtok(NULL, ",\r\n");
 			if(p == NULL) continue;
