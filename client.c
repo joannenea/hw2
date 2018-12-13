@@ -9,7 +9,7 @@
 #include <pthread.h> 
 
 
-#define PORT 1234   
+#define PORT 8834   
 #define MAXDATASIZE 1048576  //資料傳輸最多1MB
 #define NONE "\033[m"
 #define RED "\033[0;32;31m"
@@ -41,7 +41,7 @@ int fd;
 void sendfile(char* filename)
 {   
     //開始傳送檔案
-    fprintf(stderr, YELLOW"Start send file!\n"NONE);
+    fprintf(stderr, LIGHT_GREEN"Start send file!\n"NONE);
 
     //取得檔案長度
     FILE *fp = fopen(filename, "r");
@@ -82,7 +82,7 @@ void pthread_recv(void* ptr)
             char path[1024];
             memset(path,0,1024);
             sprintf(path,"./download/%s",filename);
-            printf(YELLOW"recv file to %s\n"NONE,path);
+            printf(LIGHT_GREEN"recv file to %s\n"NONE,path);
             FILE *fp1 = fopen(path, "w");
             while(cnt<filesize)
             {
@@ -95,7 +95,7 @@ void pthread_recv(void* ptr)
             }
 	        fclose(fp1);
             recv_flag = 0;
-            printf(YELLOW"download file finished.\n"NONE);
+            printf(LIGHT_GREEN"download file finished.\n"NONE);
             continue;
         }
         printf("%s",recvbuf);
@@ -151,8 +151,8 @@ int main(int argc, char *argv[])
         exit(1); 
     } 
 
-    printf(YELLOW"connect success\n"NONE);
-    printf(YELLOW"請輸入用戶名："NONE);
+    printf(LIGHT_GREEN"連線成功\n"NONE);
+    printf(LIGHT_GREEN"請輸入您的用戶名："NONE);
     fgets(name,sizeof(name),stdin);
     name[strlen(name)-1] = '\0';
     send(fd,name,(strlen(name)),0);
@@ -179,7 +179,7 @@ int main(int argc, char *argv[])
             else if (strcmp(p, "N") == 0){
                 recv_flag = 0;
             }else{
-                printf(YELLOW"Please type Y/N : "NONE);
+                printf(LIGHT_GREEN"請輸入 Y/N : "NONE);
                 fgets(sendbuf, MAXDATASIZE, stdin);
             }
         }
