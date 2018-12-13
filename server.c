@@ -177,7 +177,7 @@ void *pthread_service(void* sfd)
 		char ori[1024];
 		strcpy(ori,mes);
 		char *p = strtok(mes, ",\r\n");
-		if (strcmp(p, "sendto") ==0){
+		if (strcmp(p, "mesto") ==0){
 			//發送訊息
 			p = strtok(NULL, ",\r\n");
 
@@ -185,7 +185,7 @@ void *pthread_service(void* sfd)
 			if(target==-1)
 			{
 				memset(str, 0, sizeof(str));
-				strcpy(str,"該用戶不存在\n");
+				strcpy(str,"user not found!\n");
 				send(fd,str,sizeof(str),0);
 			}
 			else{
@@ -287,7 +287,7 @@ int  main()
 		perror("listen() error\n"); 
 		exit(1); 
 	} 
-	printf("正在等待連線請稍後\n");
+	printf("Waiting for client....\n");
 
 
 	while(1)
@@ -298,7 +298,7 @@ int  main()
 		}
 
 		if(number>=Max){
-			printf("超過可連線人數\n");
+			printf("no more client is allowed\n");
 			close(fd);
 		}
 
