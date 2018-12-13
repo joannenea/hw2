@@ -9,7 +9,7 @@
 #include <pthread.h>
 
 
-#define PORT 1234
+#define PORT 8834
 #define MAXDATASIZE 1048576  //資料傳輸最多1MB
 #define NONE "\033[m"
 #define RED "\033[0;32;31m"
@@ -95,7 +95,7 @@ void pthread_recv(void* ptr)
             }
 	        fclose(fp1);
             recv_flag = 0;
-            printf(LIGHT_GREEN"download file finished.\n"NONE);
+            printf(LIGHT_GREEN"download finished.\n"NONE);
             continue;
         }
         printf("%s",recvbuf);
@@ -151,7 +151,7 @@ int main(int argc, char *argv[])
         exit(1);
     }
 
-    printf(LIGHT_GREEN"connect success\n"NONE);
+    printf(LIGHT_GREEN"連線成功\n"NONE);
     printf(LIGHT_GREEN"請輸入用戶名："NONE);
     fgets(name,sizeof(name),stdin);
     name[strlen(name)-1] = '\0';
