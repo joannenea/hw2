@@ -41,7 +41,7 @@ int fd;
 void sendfile(char* filename)
 {   
     //開始傳送檔案
-    fprintf(stderr, LIGHT_GREEN"Start send file!\n"NONE);
+    fprintf(stderr, LIGHT_GREEN"開始傳送檔案\n"NONE);
 
     //取得檔案長度
     FILE *fp = fopen(filename, "r");
@@ -95,7 +95,7 @@ void pthread_recv(void* ptr)
             }
 	        fclose(fp1);
             recv_flag = 0;
-            printf(LIGHT_GREEN"download file finished.\n"NONE);
+            printf(LIGHT_GREEN"下載完畢\n"NONE);
             continue;
         }
         printf("%s",recvbuf);
