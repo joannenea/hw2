@@ -41,7 +41,7 @@ int fd;
 void sendfile(char* filename)
 {   
     //開始傳送檔案
-    fprintf(stderr, LIGHT_GREEN"Start send file!\n"NONE);
+    fprintf(stderr, LIGHT_GREEN"開始傳送檔案\n"NONE);
 
     //取得檔案長度
     FILE *fp = fopen(filename, "r");
@@ -95,7 +95,7 @@ void pthread_recv(void* ptr)
             }
 	        fclose(fp1);
             recv_flag = 0;
-            printf(LIGHT_GREEN"download file finished.\n"NONE);
+            printf(LIGHT_GREEN"下載完成.\n"NONE);
             continue;
         }
         printf("%s",recvbuf);
@@ -191,7 +191,7 @@ int main(int argc, char *argv[])
 
         char *p = strtok(sendbuf, ",\r\n");
         if (p == NULL) continue;
-        if(strcmp(p,"sendto") == 0){
+        if(strcmp(p,"mes>>") == 0){
             //送給特定對象
             p = strtok(NULL,",\r\n");
             if(p == NULL) continue;
@@ -203,7 +203,7 @@ int main(int argc, char *argv[])
             sprintf(sendbuf2,"sendto,%s,%s,%s",to_user,p,name);
             send(fd, sendbuf2, strlen(sendbuf2), 0);
         }
-        else if ((strcmp(p, "sendfileto") == 0)){
+        else if ((strcmp(p, "file>>") == 0)){
             //檔案發送指令
             p = strtok(NULL,",\r\n");
             if(p == NULL) continue;
@@ -221,7 +221,7 @@ int main(int argc, char *argv[])
         }
         else if(strcmp(sendbuf,"exit")==0){
             memset(sendbuf,0,sizeof(sendbuf));
-            printf(RED"您已退出群聊\n"NONE);
+            printf(RED"您已離開聊天室\n"NONE);
             send(fd,sendbuf,(strlen(sendbuf)),0);
             break;
         }
