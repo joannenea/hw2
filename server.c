@@ -177,7 +177,7 @@ void *pthread_service(void* sfd)
 		char ori[1024];
 		strcpy(ori,mes);
 		char *p = strtok(mes, ",\r\n");
-		if (strcmp(p, "sendto") ==0){
+		if (strcmp(p, "mes>>") ==0){
 			//發送訊息
 			p = strtok(NULL, ",\r\n");
 
@@ -197,7 +197,7 @@ void *pthread_service(void* sfd)
 			}
 
 		}
-		else if (strcmp(p, "sendfileto")==0){
+		else if (strcmp(p, "file>>")==0){
 			//發送檔案
 			p = strtok(NULL, ",\r\n");
 			if(p == NULL) continue;
