@@ -200,7 +200,7 @@ int main(int argc, char *argv[])
             p = strtok(NULL,",\r\n");
             if(p == NULL) continue;
             memset(sendbuf2,0,sizeof(sendbuf2));
-            sprintf(sendbuf2,"sendto,%s,%s,%s",to_user,p,name);
+            sprintf(sendbuf2,"mes>>,%s,%s,%s",to_user,p,name);
             send(fd, sendbuf2, strlen(sendbuf2), 0);
         }
         else if ((strcmp(p, "file>>") == 0)){
@@ -212,7 +212,7 @@ int main(int argc, char *argv[])
             p = strtok(NULL,",\r\n");
             if(p == NULL) continue;
             memset(sendbuf2,0,sizeof(sendbuf2));
-            sprintf(sendbuf2,"sendfileto,%s,%s,%s",to_user,p,name);
+            sprintf(sendbuf2,"file>>,%s,%s,%s",to_user,p,name);
             send(fd, sendbuf2, strlen(sendbuf2), 0);
             
         }else if ((strcmp(p, "getuser") == 0)){
@@ -221,7 +221,7 @@ int main(int argc, char *argv[])
         }
         else if(strcmp(sendbuf,"exit")==0){
             memset(sendbuf,0,sizeof(sendbuf));
-            printf(BLUE"您已離開聊天室\n"NONE);
+            printf(LIGHT_BLUE"您已離開聊天室\n"NONE);
             send(fd,sendbuf,(strlen(sendbuf)),0);
             break;
         }
