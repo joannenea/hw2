@@ -221,7 +221,7 @@ int main(int argc, char *argv[])
         }
         else if(strcmp(sendbuf,"exit")==0){
             memset(sendbuf,0,sizeof(sendbuf));
-            printf(RED"您已離開聊天室\n"NONE);
+            printf(BLUE"您已離開聊天室\n"NONE);
             send(fd,sendbuf,(strlen(sendbuf)),0);
             break;
         }
